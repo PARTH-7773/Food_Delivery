@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Foody</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar flex between wrapper">
+            <a href="index.php" class="logo">Foodie.</a>
+        </nav>
+    </header>
+
+    <main class="wrapper p-top">
+        <div class="checkout-container">
+            <div class="order-summary">
+                <h2>Your Order</h2>
+                <div id="order-items-list">
+                    </div>
+                <div class="order-total">
+                    <h4>Total</h4>
+                    <h4 id="order-total-price">$0.00</h4>
+                </div>
+            </div>
+
+            <div class="customer-details">
+                <h2>Your Details</h2>
+                <form id="checkout-form">
+                    <div class="input-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="address">Delivery Address</label>
+                        <input type="text" id="address" name="address" placeholder="Enter your address" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                    </div>
+                    <button type="submit" class="btn">Place Order</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="checkout.js"></script>
+</body>
+</html>

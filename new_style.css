@@ -1,0 +1,97 @@
+/* MODERN & ATTRACTIVE CHECKOUT PAGE STYLES */
+
+/* Main container using CSS Grid for a clean two-column layout */
+.checkout-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: auto;
+    align-items: flex-start;
+}
+
+/* Styling for the two main cards on the page */
+.order-summary,
+.customer-details {
+    background: var(--pure-white);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+    border: 1px solid #f0f0f0;
+}
+
+.order-summary h2,
+.customer-details h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: var(--lead);
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+/* Styling for items in the order summary */
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    color: #555;
+}
+
+.order-item span {
+    font-size: 1.1rem;
+}
+
+.order-item strong {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--lead);
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--lead);
+}
+
+/* Improved form styling */
+.customer-details .input-group {
+    margin-bottom: 1.5rem;
+}
+
+.customer-details .input-group label {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: var(--lead);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.customer-details .input-group input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.customer-details .input-group input:focus {
+    outline: none;
+    border-color: var(--gold-finger);
+    box-shadow: 0 0 0 3px var(--hint-yellow);
+}
+
+.customer-details .btn {
+    width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 1.1rem;
+    margin-top: 1rem;
+}
