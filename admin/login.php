@@ -37,7 +37,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>Admin Login</title>
-    <link rel="stylesheet" href="../style.css"> </head>
+    <link rel="stylesheet" href="../my_style.css"> </head>
 <body>
     <header>
         <nav class="navbar flex between wrapper">

@@ -11,6 +11,12 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="ex_style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script>
+        // This creates a JavaScript variable based on the PHP session
+        const isLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
+    </script>
+
     <script defer src="main.js"></script>
 </head>
 
@@ -51,13 +57,30 @@
                 </a>
 
                 <?php if (isset($_SESSION['user_name'])): ?>
-                    <span style="color: var(--lead); align-self: center;">Welcome, <?php echo htmlspecialchars($_SESSION['user_name']);?>! <a href="logout.php" class="btn">Logout</a></span>
-                    <!-- <a href="logout.php" class="btn">Logout</a> -->
+
+                    <div class="user-dropdown">
+                        <button class="btn dropdown-btn">
+                            <i class="fa-solid fa-user"></i>
+                            <?php echo htmlspecialchars(substr($_SESSION['user_name'], 0, 8)); ?>..
+                            <i class="fa-solid fa-caret-down"></i>
+                        </button>
+
+                        <div class="dropdown-content">
+                            <a href="profile.php">
+                                <i class="fa-solid fa-id-card"></i> Profile
+                            </a>
+                            <a href="my_orders.php">
+                                <i class="fa-solid fa-box-open"></i> My Orders
+                            </a>
+                            <a href="logout.php" class="logout-link">
+                                <i class="fa-solid fa-right-from-bracket"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+
                 <?php else: ?>
                     <a href="signin.php" class="btn">
-                        Sign in
-                        &nbsp;
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        Sign in <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     </a>
                 <?php endif; ?>
 
@@ -68,6 +91,9 @@
 
             <!-- MOBILE MENU -->
             <ul class="mobile-menu">
+                <li style="text-align: right; width: 100%;">
+                    <i class="fa-solid fa-xmark" onclick="document.querySelector('.mobile-menu').classList.remove('mobile-menu-active')" style="font-size: 2rem; cursor: pointer; color: var(--lead); padding: 10px;"></i>
+                </li>
                 <li>
                     <a href="#">Home</a>
                 </li>
@@ -87,13 +113,21 @@
                 <li>
                     <a href="#">Contacts</a>
                 </li>
-                <li>
-                    <a href="#" class="btn">
-                        Sing in
-                        &nbsp;
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                    </a>
-                </li>
+                <?php if (isset($_SESSION['user_name'])): ?>
+                    <li style="margin-top: 1rem; color: var(--gold-finger); font-weight: bold;">
+                        Hi, <?php echo htmlspecialchars($_SESSION['user_name']); ?>
+                    </li>
+                    <li>
+                        <a href="logout.php" class="btn" style="background: var(--lead); color: white;">Logout</a>
+                    </li>
+                <?php else: ?>
+                    <li>
+                        <a href="signin.php" class="btn">
+                            Sign in <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </a>
+                    </li>
+                <?php endif; ?>
+                <a href="my_orders.php" class="btn" style="background: var(--lead); color: white;">My Orders</a>
             </ul>
 
         </nav>
@@ -180,6 +214,22 @@
                 <div class="text-center">
                     <h5>Our menu</h5>
                     <h2> The most populer</h2>
+                    <div class="filter-section text-center wrapper" style="margin-top: 2rem; margin-bottom: 2rem;">
+
+                        <div class="search-container">
+                            <input type="text" id="search-input" placeholder="Search for food (e.g. Burger)...">
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        </div>
+
+                        <div class="category-container flex gap-2" style="justify-content: center; margin-top: 1.5rem;">
+                            <button class="cat-btn active-cat" data-id="all">All</button>
+                            <button class="cat-btn" data-id="Burger">Burgers</button>
+                            <button class="cat-btn" data-id="Pizza">Pizza</button>
+                            <button class="cat-btn" data-id="Chicken">Chicken</button>
+                            <button class="cat-btn" data-id="Chinese">Chinese</button>
+                            <button class="cat-btn" data-id="Indian">Indian</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-list text-center flex mt-4 gap-2">
                     <!-- <div class="order-card">
@@ -223,7 +273,7 @@
 
                     <div class="btn-container flex gap-2">
                         <a href="#" class="btn close-btn">Close</a>
-                        <a href="#" class="btn">Check Out</a>
+                        <a href="new_checkout.php" class="btn">Check Out</a>
                     </div>
                 </div>
             </div>
@@ -447,6 +497,18 @@
 
     </footer>
 
+    <div id="login-popup" class="popup-overlay">
+        <div class="popup-content">
+            <i class="fa-solid fa-user-lock" style="font-size: 3rem; color: var(--gold-finger); margin-bottom: 1rem;"></i>
+            <h2>Login Required</h2>
+            <p>You need to login to place an order and track your food.</p>
+
+            <div class="popup-buttons flex gap-2" style="justify-content: center; margin-top: 1.5rem;">
+                <button id="close-popup-btn" class="btn" style="background: #ddd; color: var(--lead);">Cancel</button>
+                <a href="signin.php" class="btn">Login Now</a>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>

@@ -12,11 +12,12 @@
     padding: 1.5rem;
 }
 
-.admin-sidebar h2 {
+.admin-sidebar h3 {
     text-align: center;
     color: var(--gold-finger);
     margin-bottom: 2rem;
     font-size: 1.8rem;
+    padding-top:20px ;
 }
 
 .admin-sidebar ul {

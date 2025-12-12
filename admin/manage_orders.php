@@ -46,11 +46,12 @@ $orders_result = $conn->query("SELECT * FROM orders ORDER BY order_date DESC");
 <body class="admin-body">
 
     <aside class="admin-sidebar">
-        <h2>Admin Panel</h2>
+        <h3>Admin Panel</h3>
         <ul>
             <li><a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
             <li><a href="manage_users.php"><i class="fas fa-users"></i> Manage Users</a></li>
             <li><a href="manage_orders.php" class="active"><i class="fas fa-box"></i> Manage Orders</a></li>
+            <li><a href="manage_products.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'manage_products.php' ? 'active' : ''; ?>"><i class="fas fa-utensils"></i> Manage Products</a></li>
             <li><a href="../" target="_blank"><i class="fas fa-globe"></i> View Main Site</a></li>
             <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
@@ -110,7 +111,7 @@ $orders_result = $conn->query("SELECT * FROM orders ORDER BY order_date DESC");
                                 </td>
                                 <td>₹<?php echo number_format($order['total_amount'], 2); ?></td>
                                 <td><?php echo htmlspecialchars($order['customer_address']); ?></td>
-                                <td><?php echo htmlspecialchars($order['customer_phone']); ?></td>
+                                <td><?php echo "+91 ". htmlspecialchars($order['customer_phone']); ?></td>
                                 <td><?php echo $order['order_date']; ?></td>
                             </tr>
                         <?php endwhile; ?>

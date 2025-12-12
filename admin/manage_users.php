@@ -46,11 +46,12 @@ $users_result = $conn->query("SELECT id, name, email, role FROM users ORDER BY i
 <body class="admin-body">
 
     <aside class="admin-sidebar">
-        <h2>Admin Panel</h2>
+        <h3>Admin Panel</h3>
         <ul>
             <li><a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
             <li><a href="manage_users.php" class="active"><i class="fas fa-users"></i> Manage Users</a></li>
             <li><a href="manage_orders.php"><i class="fas fa-box"></i> Manage Orders</a></li>
+            <li><a href="manage_products.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'manage_products.php' ? 'active' : ''; ?>"><i class="fas fa-utensils"></i> Manage Products</a></li>
             <li><a href="../" target="_blank"><i class="fas fa-globe"></i> View Main Site</a></li>
             <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>

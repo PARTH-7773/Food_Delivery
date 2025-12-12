@@ -46,14 +46,14 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In - Foody Website</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Sign In - Food Delivery Website</title>
+    <link rel="stylesheet" href="my_style.css">
 </head>
 
 <body>
     <header>
         <nav class="navbar flex between wrapper">
-            <a href="index.html" class="logo">Food Delivery</a>
+            <a href="index.php" class="logo">Food Delivery</a>
         </nav>
     </header>
     <main class="signin-container">

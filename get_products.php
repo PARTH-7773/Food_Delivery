@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 // Set a conversion rate (e.g., 1 USD = 80 INR)
 $usd_to_inr_rate = 80;
 
-$sql = "SELECT id, name, price, image FROM products";
+$sql = "SELECT id, name, price, image, category FROM products ";
 $result = $conn->query($sql);
 
 $products = [];
